@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Scaloneta Kicks – Colección 2022</title>
+  <link rel="stylesheet" href="css/coleccion.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🏆</div>
+    <div class="logo-text"><span>La Scaloneta</span><span>Kicks · Qatar 2022</span></div>
+  </a>
+  <nav id="desktop-nav">
+    <a href="indexV3.html" class="nav-link">Inicio</a>
+    <a href="coleccion.html" class="active">Colección</a>
+    <a href="nosotros.html" class="nav-link">Nosotros</a>
+    <a href="contacto.html" class="nav-link">Contacto</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="indexV3.html">Inicio</a>
+    <a href="coleccion.html">Colección</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <section class="productos" id="coleccion">
+    <div class="section-header">
+      <span class="section-tag">Colección 2022</span>
+      <h2>Los <em>Héroes</em><br>en tus pies</h2>
+      <p>Diseño exclusivo. Materiales importados. Alma argentina.</p>
+    </div>
+    <div class="productos-grid" id="productosGrid"></div>
+  </section>
+</main>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><div class="logo-icon">🏆</div><div class="logo-text"><span>La Scaloneta</span><span>Kicks</span></div></div>
+      <p>Zapatillas importadas de edición limitada. Inspiradas en los campeones del mundo. 🇦🇷</p>
+    </div>
+    <div class="footer-col"><h4>Tienda</h4><ul><li><a href="coleccion.html">Colección 2022</a></li><li><a href="#">Novedades</a></li><li><a href="#">Ediciones Anteriores</a></li></ul></div>
+    <div class="footer-col"><h4>Información</h4><ul><li><a href="indexV3.html#nosotros">Quiénes Somos</a></li><li><a href="#">Cómo Comprar</a></li><li><a href="#">Envíos y Devoluciones</a></li></ul></div>
+    <div class="footer-social"><h4>Seguinos</h4><div class="social-links"><a href="#" class="social-link instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-link twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" class="social-link facebook"><i class="fa-brands fa-facebook-f"></i></a></div></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2024 <span>La Scaloneta Kicks</span>. Hecho con ❤️ y mate en Argentina.</p><div class="payment-icons"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-paypal"></i></div></div>
+</footer>
+
+<!-- MODAL LIGHTBOX (sin cambios) -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal-container">
+    <button class="modal-close" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-content">
+      <div class="modal-image"><img id="modalImg" alt="Producto ampliado"></div>
+      <div class="modal-info">
+        <span class="badge-modal" id="modalBadge"></span>
+        <span class="jugador-modal" id="modalJugador"></span>
+        <h3 id="modalModelo"></h3>
+        <p class="desc-modal" id="modalDesc"></p>
+        <div class="modal-price"><span class="usd-modal" id="modalUSD"></span><span class="ars-modal" id="modalARS"></span></div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="nav-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="nav-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Datos de los 6 productos (igual que antes)
+  const productos = [
+    { img: "img/photo-1542291026-7eec264c27ff.jfif", badge: "Edición Oro", jugador: "Lionel Messi · #10", modelo: "La Pulga Dorada", desc: "Cuero italiano con detalles en oro y celeste. Suela de carbono ultraligera. La perfección hecha zapatilla, como su fútbol.", usd: "USD 349", ars: "≈ ARS 345.000", numero: "10" },
+    { img: "img/photo-1608231387042-66d1773070a5.jfif", badge: "Edición Araña", jugador: "Julián Álvarez · #9", modelo: "Araña Celeste", desc: "Mesh técnico con refuerzos en kevlar. Diseño inspirado en la velocidad imparable de la araña de Qatar. Agarre de élite.", usd: "USD 249", ars: "≈ ARS 246.500", numero: "9" },
+    { img: "img/photo-1600269452121-4f2416e55c28.jfif", badge: "Edición Motor", jugador: "Rodrigo De Paul · #7", modelo: "Motor del Desierto", desc: "Resistente a todo terreno, como De Paul al mediocampo. Suela de arena compuesta y upper en nylon balístico. Incansable.", usd: "USD 229", ars: "≈ ARS 226.800", numero: "7" },
+    { img: "img/photo-1539185441755-769473a23570.jfif", badge: "Edición Muro", jugador: "Emiliano 'Dibu' Martínez · #23", modelo: "El Muro Verde", desc: "Refuerzos de protección extrema en puntera y talón. Grip antideslizante absoluto. Tan segura como las manos del Dibu.", usd: "USD 269", ars: "≈ ARS 266.300", numero: "23" },
+    { img: "img/photo-1560769629-975ec94e6a86.jfif", badge: "Edición Elegante", jugador: "Alexis Mac Allister · #20", modelo: "Mac One Blancanieves", desc: "Estilo minimal con líneas limpias y sole EVA cushiontech. Blanco glacial con acento dorado. Tan preciso como su pase.", usd: "USD 219", ars: "≈ ARS 216.800", numero: "20" },
+    { img: "img/photo-1606107557195-0e29a4b5b4aa.jfif", badge: "Edición Final", jugador: "Ángel Di María · #11", modelo: "El Fideo Final", desc: "Diseño premium en cuero repujado con brillo satinado. El gol de la final inmortalizado en cada puntada. Edición muy limitada.", usd: "USD 399", ars: "≈ ARS 394.000", numero: "11" }
+  ];
+
+  // Renderizar grilla
+  const grid = document.getElementById('productosGrid');
+  productos.forEach((p, idx) => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.dataset.index = idx;
+    card.innerHTML = `
+      <span class="card-badge">${p.badge}</span>
+      <div class="card-img">
+        <img src="${p.img}" alt="${p.modelo}" loading="lazy">
+        <span class="card-number">${p.numero}</span>
+      </div>
+      <div class="card-body">
+        <span class="card-jugador">${p.jugador}</span>
+        <h3 class="card-modelo">${p.modelo}</h3>
+        <p class="card-desc">${p.desc}</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-precio"><span class="usd">${p.usd}</span><span class="ars">${p.ars}</span></div>
+        <a href="#" class="btn-card">Comprar <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Modal y navegación (igual que antes)
+  const modal = document.getElementById('modalOverlay');
+  const modalImg = document.getElementById('modalImg');
+  const modalBadge = document.getElementById('modalBadge');
+  const modalJugador = document.getElementById('modalJugador');
+  const modalModelo = document.getElementById('modalModelo');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalUSD = document.getElementById('modalUSD');
+  const modalARS = document.getElementById('modalARS');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+
+  function openModal(index) {
+    if (index < 0) index = productos.length - 1;
+    if (index >= productos.length) index = 0;
+    currentIndex = index;
+    const p = productos[currentIndex];
+    modalImg.src = p.img;
+    modalBadge.textContent = p.badge;
+    modalJugador.textContent = p.jugador;
+    modalModelo.textContent = p.modelo;
+    modalDesc.textContent = p.desc;
+    modalUSD.textContent = p.usd;
+    modalARS.textContent = p.ars;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+  function nextProduct() { openModal(currentIndex + 1); }
+  function prevProduct() { openModal(currentIndex - 1); }
+
+  document.querySelectorAll('.card').forEach((card, idx) => {
+    card.querySelector('.card-img').addEventListener('click', (e) => { e.stopPropagation(); openModal(idx); });
+  });
+  closeBtn.addEventListener('click', closeModal);
+  prevBtn.addEventListener('click', prevProduct);
+  nextBtn.addEventListener('click', nextProduct);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') prevProduct();
+    if (e.key === 'ArrowRight') nextProduct();
+  });
+
+  // Menú hamburguesa
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  function toggleMenu() { mobileMenu.classList.toggle('open'); hamburger.classList.toggle('open'); document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : ''; }
+  function closeMenuMobile() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
+  hamburger.addEventListener('click', toggleMenu);
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenuMobile));
+  window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeMenuMobile(); });
+
+  // === SOLUCIÓN ADICIONAL: Garantizar navegación a anclajes ===
+  // Asegura que al hacer clic en cualquier enlace que vaya a indexV3.html#algo, funcione incluso si el navegador falla.
+  document.querySelectorAll('a[href^="indexV3.html#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').split('#')[1];
+      window.location.href = `indexV3.html#${targetId}`;
+    });
+  });
+</script>
+</body>
+</html>

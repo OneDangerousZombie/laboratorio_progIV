@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#74ACDF" />
+  <meta name="description" content="Zapatillas importadas inspiradas en los campeones del mundo. Colección exclusiva Qatar 2022." />
+  <title>La Scaloneta Kicks – Contacto</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+  <a href="indexV3.html" class="logo">
+    <div class="logo-icon">🏆</div>
+    <div class="logo-text">
+      <span>La Scaloneta</span>
+      <span>Kicks · Qatar 2022</span>
+    </div>
+  </a>
+  <nav id="desktop-nav">
+    <a href="indexV3.html">Inicio</a>
+    <a href="coleccion.html">Colección</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="indexV3.html">Inicio</a>
+    <a href="coleccion.html">Colección</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<main>
+<section class="newsletter" id="newsletter">
+    <div class="newsletter-container">
+      <div class="newsletter-content">
+        <i class="fa-solid fa-envelope-open-text newsletter-icon"></i>
+        <h3>Suscribite al newsletter</h3>
+        <p>Recibí novedades, lanzamientos exclusivos y contenido especial de la Scaloneta Kicks.<br>¡No te pierdas ninguna edición limitada!</p>
+        <form id="formNewsletter" class="newsletter-form">
+          <div class="form-group"><input type="text" id="nombre" placeholder="Tu nombre (opcional)"></div>
+          <div class="form-group"><input type="email" id="email" placeholder="Correo electrónico *" required></div>
+          <button type="submit" class="btn-primary btn-newsletter"><i class="fa-regular fa-bell"></i> Suscribirme</button>
+        </form>
+        <p class="newsletter-nota">No enviamos spam. Puedes darte de baja cuando quieras.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><div class="logo-icon">🏆</div><div class="logo-text"><span>La Scaloneta</span><span>Kicks</span></div></div>
+      <p>Zapatillas importadas de edición limitada. Inspiradas en los campeones del mundo. 🇦🇷</p>
+    </div>
+    <div class="footer-col"><h4>Tienda</h4><ul><li><a href="coleccion.html">Colección 2022</a></li><li><a href="#">Novedades</a></li><li><a href="#">Ediciones Anteriores</a></li><li><a href="#">Accesorios</a></li></ul></div>
+    <div class="footer-col"><h4>Información</h4><ul><li><a href="nosotros.html">Quiénes Somos</a></li><li><a href="#">Cómo Comprar</a></li><li><a href="#">Envíos y Devoluciones</a></li><li><a href="#">Preguntas Frecuentes</a></li></ul></div>
+    <div class="footer-social"><h4>Seguinos</h4><div class="social-links"><a href="#" class="social-link instagram"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-link twitter"><i class="fa-brands fa-x-twitter"></i></a><a href="#" class="social-link facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#" class="social-link youtube"><i class="fa-brands fa-youtube"></i></a><a href="#" class="social-link tiktok"><i class="fa-brands fa-tiktok"></i></a></div></div>
+  </div>
+  <div class="footer-bottom"><p>&copy; 2024 <span>La Scaloneta Kicks</span>. Todos los derechos reservados. Hecho con ❤️ y mate en Argentina. 🇦🇷</p><div class="payment-icons"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-cc-amex"></i><i class="fa-brands fa-cc-paypal"></i></div></div>
+</footer>
+
+<script>
+  // Menú hamburguesa
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  function toggleMenu() { mobileMenu.classList.toggle('open'); hamburger.classList.toggle('open'); document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : ''; }
+  function closeMenu() { mobileMenu.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
+  hamburger.addEventListener('click', toggleMenu);
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('click', (e) => { if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) closeMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth >= 768) closeMenu(); });
+</script>
+</body>
+</html>
